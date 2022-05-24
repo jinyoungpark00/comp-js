@@ -1,0 +1,254 @@
+console에서 js다룰 수 있음.
+
+데이터 타입
+1) number(integer, float) ==> 연산 가능
+2) text  "..."를 사용 ==> string 끼리 더할 수 있음(연결)
+3)boolean ==> true(1), false(0).
+4)null, undifined
+
+
+variables
+function
+return
+
+console.log("hello!" + 123123); // ()안의 것을 console에 출력
+
+//변수, 데이터 타입
+const a = 10; // 변수 선언, const를 default로 사용
+const b = 2;
+
+let myName = "park"; // 변수 선언 시 공백 올 수 없음. capital로 구분
+
+let c = 20; //변경할 수 있는 변수 cosnt는 변경 불가능.
+var d = 100;//var은 그냥. let 느낌?
+
+console.log(a+b);
+console.log(a*b);
+console.log(a/b); //위에서 아래로 읽고 계산
+                //쉽게 숫자들을 바꾸기 위해서 변수 사용.
+console.log("hello "+ myName);
+
+myName = "jinyoung"// let으로 선언했기에 변경 가능
+console.log(myName)
+
+const amIFat = true; // boolean
+console.log(amIFat);
+
+const not = null; // nothing here , 자연발생 하지 않음. 없다라는걸 알려주려고 인위적으로 넣어야함.
+console.log(not);
+
+let something; //undefined --> 값이 없음.var은 존재하지만 값이 들어가지 않은 상태.
+console.log(something);
+
+
+
+//array
+const days = ["mon","tue", "wed", "thu", "fri", "sat"]; // array
+console.log(days);
+console.log(days[0]); //var[number]을 통해 지정 가능 0부터 시작함
+console.log(days[6]); // 7번재 element가 없으니 undefined
+
+
+days.push("sun"); // push() array에 내용물 추가.
+console.log(days[6]);
+
+
+
+
+// xxxx.xxxx object
+const playerName = "park";
+const playerPoints = 1000;
+const playerHandsome = false;
+const playerFat ="litte";
+
+// ===> array
+
+const playerArray = ["park", 1000, false,"little"]; 
+
+// ==> object 
+const playerObject = {
+    name: "park",
+    points: 1000,
+    fat: true
+};
+console.log(playerObject);
+console.log(playerObject.name); //same
+console.log(playerObject["points"]); //same
+
+playerObject.fat = false; // const array, object 안의 무안가를 바꾸는 것은 상관 없음.
+console.log(playerObject.fat);
+
+playerObject.lastname = "jinyoung";// array에서 push 역할 (추가할 수 있음)
+console.log(playerObject);
+
+
+//function ==> 코드조각    function(내용~~~)
+function hello(name, age){ //function 안에만 존재하는 var, 내용을 밖으로부터 받을 수 있음
+    console.log("hello my name is", name, age);
+};
+
+hello(); // undefined
+hello("park", 23);
+hello("kim", 9);
+
+function plus(a, b){
+    console.log(a + b); // 10과 20 을 받아서 연산하고 console에 표시함.
+};
+
+plus(); // ==> NaN not a number.
+plus(10, 20); // 각각 a 와 b 에 대응.
+
+function divide(a, b){
+    console.log(a / b);
+}
+
+divide(10, 20);
+
+
+
+const player = {
+    name: "park",
+    sayHello: function (name){ // object 안에서 함수를 선언하는 방법
+        console.log("hello!", name); 
+    }
+};
+
+
+player.sayHello("lee");
+
+
+//return 결과값을 줌.
+const age = 21;
+function calculateKrAge(ageOfForeigner){
+    ageOfForeigner += 2;
+    return ageOfForeigner; // return을 통해서 값을 반환할 수 있음. 호출한 function의 값이 return한 값과 같아짐.
+} //얻은 값으로 상호 의존적인 프로그램 작성 가능해짐.
+
+const krAge = calculateKrAge(age);
+
+console.log(krAge);
+
+
+
+
+//consditions
+const old = prompt("HOw old are you?"); //값이 들어올대까지 기다림
+
+console.log(old);
+
+
+//switch type!
+console.log(typeof old, typeof parseInt(old)); // parseInt로 data type change
+
+console.log(old, parseInt(old)); // --> number인지 확인 가능.
+
+const howOld = parseInt(prompt("how old?"));
+
+console.log(howOld, typeof(howOld));
+
+//isNan --> if argument is not a number return boolean(false)
+console.log(isNaN(old));
+
+
+// 조건문 형태
+if(isNaN(old)){
+    //condition == true
+    console.log("Please write a nuber");
+}
+else{
+    //condition != true
+    console.log("Thank you for writing your age");
+}
+
+
+const age = parseInt(prompt("How old are you?"))
+
+if(isNaN(age) || age < 0){
+    console.log("Please write real positive number.")
+}
+else if(age < 18){
+    console.log("Your so young.")
+}
+else if(age >= 18 && age <= 50){
+    console.log("You can drink.")
+}
+else if(age >50 && age <= 80){
+    console.log("You can't drink.")
+}
+else if(age > 80){
+    console.log("You can do anything!")
+}
+
+
+document.title = "lalalalalalala";
+// js는 html에 자동으로 연결이 되있음. --> js를 통해 html을 변경할 수 있음
+
+//how eto grab
+const title = document.getElementById("title");
+
+console.dir(title);
+
+//grqb해서 변경 추가 가능
+title.innerHTML = "hohohohoho";
+
+console.log(title.id);
+console.log(title.className);
+
+
+//getElementsByClassName를 이용해서 class로 가져올 수 있음
+const hellos = document.getElementsByClassName("hello");
+
+console.log(hellos);
+
+//tag로 가져오기도 가능 but, array 형태로 가져오기 때문에 각각 수정이 불가능
+const something = document.getElementsByTagName("div");
+
+console.log(something);
+
+
+//css형태로 가져와서 변경 가능 id, class 다 가능 여러개라면 첫 번째 것만 가져옴
+const query = document.querySelector(".something h1");
+
+console.log(query);
+
+const queryAll = document.querySelectorAll(".something h1");
+
+console.log(queryAll);
+
+//classList 활용
+const title = document.querySelector(".title h1");
+
+function handleTitleClick(){
+    const active = "active"
+    
+    if(title.classList.contains(active)){
+        title.classList.remove(active);
+    } else{
+        title.classList.add(active);
+    }
+
+    == title.classList.toggle(active);
+}
+
+title.addEventListener("click", handleTitleClick);
+
+//logIn form
+const loginInput = document.querySelector("#login-form input");
+const loginButton = document.querySelector("#login-form button");
+
+function loginButtonClick(){
+    const user = loginInput.value;
+
+    if(user == ""){
+        alert("Please put a ID");
+    }
+    else if(user.length > 15){
+        alert("Your name is too long.");
+    }
+    else{
+        console.log("Hello", loginInput.value);
+    }
+}
+
+
+loginButton.addEventListener("click", loginButtonClick);
